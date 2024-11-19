@@ -1,25 +1,37 @@
 package com.jpa.demo.models;
 
+import jakarta.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "vacantes")
 public class Vacante {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	private String nombre;
 	private String descripcion;
 	private Date fecha;
 	private double salario;
 	private Integer destacado; // si tiene el valor 1 es destacado, si tiene 0 no lo es
+
 	// nuevo atributo, para gestionar las imagenes de cada vacante
 	private String imagen = "no-image.png";
 	private String estatus;
-	private String detalle;
+	private String detalles;
+
+	@ManyToOne
+	@JoinColumn(name = "idCategoria")
+	private Categoria categoria;
 
 	public String getDetalle() {
-		return detalle;
+		return detalles;
 	}
 
 	public void setDetalle(String detalle) {
-		this.detalle = detalle;
+		this.detalles = detalle;
 	}
 
 	public String getEstatus() {
@@ -78,7 +90,6 @@ public class Vacante {
 		this.destacado = destacado;
 	}
 
-	// NOTASS
 	public String getImagen() {
 		return imagen;
 	}
@@ -90,8 +101,7 @@ public class Vacante {
 	@Override
 	public String toString() {
 		return "Vacante [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha
-				+ ", salario=" + salario + ", destacado=" + destacado + ", imagen=" + imagen + ", detalles=" + detalle
+				+ ", salario=" + salario + ", destacado=" + destacado + ", imagen=" + imagen + ", detalles=" + detalles
 				+ ", estatus=" + estatus + "]";
 	}
-
 }

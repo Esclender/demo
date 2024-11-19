@@ -1,15 +1,31 @@
 package com.jpa.demo.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
 public class Categoria {
 
+  @Id
+  @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
   private Integer id;
   private String nombre;
   private String descripcion;
+
+  @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Vacante> vacantes;
+
+  public Categoria(String nombre, String descripcion) {
+    this.nombre = nombre;
+    this.descripcion = descripcion;
+  }
 
   public Integer getId() {
     return id;
