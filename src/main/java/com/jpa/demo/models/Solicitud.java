@@ -17,11 +17,8 @@ public class Solicitud {
   private Integer id;
 
   private Date fecha;
-  private String imagen = "no-image.png";
-  private String comentario;
-
-  // @JoinColumn(name = "idSolicitud")
-  private Solicitud solicitud;
+  private String archivo = "no-image.png";
+  private String comentarios;
 
   public Integer getId() {
     return id;
@@ -40,23 +37,23 @@ public class Solicitud {
   }
 
   public String getComentario() {
-    return comentario;
+    return comentarios;
   }
 
   public void setComentario(String comentario) {
-    this.comentario = comentario;
+    this.comentarios = comentario;
   }
 
   public String getImagen() {
-    return imagen;
+    return archivo;
   }
 
-  public void setImagen(String imagen) {
-    this.imagen = imagen;
+  public void setImagen(String archivo) {
+    this.archivo = archivo;
   }
 
   @Override
   public String toString() {
-    return "Solicitud [id=" + id + ", fecha=" + fecha + ", comentario=" + comentario + ", fecha=" + fecha + "]";
+    return "Solicitud [id=" + id + ", fecha=" + fecha + ", comentario=" + comentarios + ", fecha=" + fecha + "]";
   }
 }

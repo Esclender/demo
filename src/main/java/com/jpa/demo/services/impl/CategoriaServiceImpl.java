@@ -8,7 +8,10 @@ import com.jpa.demo.models.Categoria;
 import com.jpa.demo.repository.interfaces.CategoriasRepository;
 import com.jpa.demo.services.ICategoriaService;
 
+import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -71,5 +74,15 @@ public class CategoriaServiceImpl implements ICategoriaService {
     categorias.add(new Categoria("Administración", "Administración de empresas"));
 
     return categorias;
+  }
+
+  @Override
+  public Iterable<Categoria> buscarTodosPaginado(int pageNo, int pageSize) {
+    return categoriasRepository.findAll(PageRequest.of(pageNo, pageSize));
+  }
+
+  @Override
+  public Iterable<Categoria> buscarTodosPaginadoOrdenados(int pageNo, int pageSize, Sort sort) {
+    return categoriasRepository.findAll(PageRequest.of(pageNo, pageSize, sort));
   }
 }

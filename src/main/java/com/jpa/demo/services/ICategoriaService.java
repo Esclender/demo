@@ -2,6 +2,8 @@ package com.jpa.demo.services;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
+
 import com.jpa.demo.models.Categoria;
 
 public interface ICategoriaService {
@@ -13,6 +15,10 @@ public interface ICategoriaService {
   public Iterable<Categoria> buscarTodos();
 
   public Optional<Categoria> buscarId(Integer id);
+
+  public Iterable<Categoria> buscarTodosPaginado(int pageNo, int pageSize);
+
+  public Iterable<Categoria> buscarTodosPaginadoOrdenados(int pageNo, int pageSize, Sort sort);
 
   public boolean existe(Integer id);
 

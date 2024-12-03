@@ -1,5 +1,10 @@
 package com.jpa.demo.services;
 
+import java.util.Optional;
+
+import org.springframework.data.domain.Sort;
+
+import com.jpa.demo.models.Categoria;
 import com.jpa.demo.models.Vacante;
 
 public interface IVacanteService {
@@ -8,9 +13,9 @@ public interface IVacanteService {
 
   public void guardarTodo(Iterable<Vacante> Vacantes);
 
-  public void buscarTodos();
+  public Iterable<Vacante> buscarTodosPaginadoOrdenados(int pageNo, int pageSize, Sort sort);
 
-  public void buscarId(Integer id);
+  public Optional<Vacante> buscarId(Integer id);
 
   public void existe(Integer id);
 

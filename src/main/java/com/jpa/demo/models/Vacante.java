@@ -98,6 +98,14 @@ public class Vacante {
 		this.imagen = imagen;
 	}
 
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
 	@Override
 	public String toString() {
 		return "Vacante [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha
